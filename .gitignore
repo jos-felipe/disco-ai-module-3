@@ -1,3 +1,7 @@
+# Local envrionment files
+.vscode/
+*.pdf
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
