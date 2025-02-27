@@ -1,6 +1,7 @@
 # Local envrionment files
 .vscode/
 *.pdf
+cellular
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
