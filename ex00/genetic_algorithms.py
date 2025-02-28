@@ -6,7 +6,7 @@
 #    By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/27 14:50:25 by josfelip          #+#    #+#              #
-#    Updated: 2025/02/27 14:50:30 by josfelip         ###   ########.fr        #
+#    Updated: 2025/02/28 12:15:51 by josfelip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,11 @@ class Individual:
                     self.location_scores[location] = score
             
             # Calculate overall fitness (this can be customized based on priorities)
-            self.fitness = sum(self.location_scores.values())
+            std_dev = np.std(list(self.location_scores.values()))
+            if (std_dev < 1):
+                self.fitness = sum(self.location_scores.values()) + 5.0
+            else:
+                self.fitness = sum(self.location_scores.values())
             
             return self.fitness
         except subprocess.CalledProcessError as e:
