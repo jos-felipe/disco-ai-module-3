@@ -6,7 +6,7 @@
 #    By: josfelip <josfelip@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/27 14:50:25 by josfelip          #+#    #+#              #
-#    Updated: 2025/02/28 12:15:51 by josfelip         ###   ########.fr        #
+#    Updated: 2025/02/28 14:21:49 by josfelip         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,7 +131,7 @@ class GeneticAlgorithm:
         
         # Update best individual if needed
         if self.best_individual is None or self.population[0].fitness > self.best_individual.fitness:
-            self.best_individual = Individual(self.population[0].frequencies)
+            self.best_individual = Individual(self.population[0].frequencies.copy())
             self.best_individual.location_scores = self.population[0].location_scores.copy()
             self.best_individual.fitness = self.population[0].fitness
     
@@ -199,7 +199,7 @@ class GeneticAlgorithm:
         
         # Elitism: Keep the best individuals unchanged
         elites = self.population[:self.elite_size]
-        new_population.extend([Individual(elite.frequencies) for elite in elites])
+        new_population.extend([Individual(elite.frequencies.copy()) for elite in elites])
         
         # Create the rest of the population through selection, crossover, and mutation
         while len(new_population) < self.population_size:
